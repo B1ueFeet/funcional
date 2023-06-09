@@ -7,7 +7,7 @@ import com.funcional.lista.Lista;
 public class Main {
     public static void main(String[] args) {
 
-    Lista<Integer> miLista = Lista.of(2,3,7,4,8);
+    Lista<Integer> miLista = Lista.of(2,-3,7,4,8);
         System.out.println("LISTA:");
         System.out.println(miLista.toString()+ "\n");
         
@@ -45,6 +45,14 @@ public class Main {
         System.out.println("TAKEWHILE");
         var l9 = miLista.takeWile(t->t%2==0);
         System.out.println(l9+ "\n");
+        
+        System.out.println("SUMA");
+        var l11 = Lista.suma(miLista);
+        System.out.println(l11+ "\n");
+        
+        System.out.println("MAXIMO");
+        var l12 = Lista.maximo(miLista);
+        System.out.println(l12+ "\n");
         
         
 

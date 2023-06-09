@@ -1,3 +1,11 @@
 SENTENCIAS			(if, for, switch, while)	
 					sentencias que no son asignables a variables	
 EXPRESIONES 		(2+3, a<b)
+					son expresiones que se pueden guardar en una variable
+
+NOTA: para eliminar los problemas de las sentencias (almenos del IF) se usa TERNARIOS
+
+OPERACIONES CON LISTAS 
+	SUMA:			la suma es una operacion especial cuando la lista es NUMERICA
+	MULTI:			lo mismo que la suma todo en terminos de cabecera y cola
+	saco la cabecera y hago algo con la cola XD

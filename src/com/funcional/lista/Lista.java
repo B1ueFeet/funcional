@@ -25,7 +25,7 @@ public sealed interface Lista<T> permits Nil, Cons {
 		}
 		return ret;
 	}
-
+	// OPERACIONES BASICAS CON LISTAS
 	default Lista<T> append(T elemen) {
 		return isEmpty() ? Lista.of(elemen) : Lista.of(head(), tail().append(elemen));
 	}
@@ -39,7 +39,6 @@ public sealed interface Lista<T> permits Nil, Cons {
 	}
 
 	default Lista<T> drop(int n) {
-		// elimina un numero determinado de elemntos drop(2) // elimina dos elementos
 		return isEmpty() || n <= 0 ? this : tail().drop(n - 1);
 	}
 
@@ -58,4 +57,17 @@ public sealed interface Lista<T> permits Nil, Cons {
 	default Lista<T> takeWile(Predicate<T> p) {
 		return isEmpty() || !p.test(head()) ? NIL : Lista.of(head(), tail().takeWile(p));
 	}
+	
+	//OPERACIONES CON ELEMENTOS DE LA LISTA
+	
+	static  Integer suma (Lista<Integer> ls) {
+		return ls.isEmpty() ? 0 : ls.head()+ suma(ls.tail());
+	}
+	
+	static Integer maximo (Lista<Integer> ls) {
+		return ls.isEmpty() ? 0 : Math.max(ls.head(), maximo(ls.tail()));
+	}
+
+	
+	
 }
