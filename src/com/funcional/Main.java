@@ -1,61 +1,24 @@
 package com.funcional;
 
-
-import com.funcional.lista.Cons;
-import com.funcional.lista.Lista;
+import java.util.function.Function;
 
 public class Main {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    Lista<Integer> miLista = Lista.of(2,-3,7,4,8);
-        System.out.println("LISTA:");
-        System.out.println(miLista.toString()+ "\n");
-        
-        System.out.println("APPEND");
-        var l2 = miLista.append(99);
-        System.out.println(l2 + "\n");  
-        
-        System.out.println("PREPEND");
-        var l3 = miLista.prepend(99);
-        System.out.println(l3+ "\n");
-        
-        System.out.println("REMOVE");
-        var l4 = miLista.remove(3);
-        System.out.println((l4)+ "\n");
-        
-        
-        System.out.println("DROP");
-        var l5 = miLista.drop(2);
-        System.out.println(l5+ "\n");
-        
-        System.out.println("DROPWHILE");
-        var l10 = Lista.of();
-        var l6 = miLista.dropWhile(t->t%2==0);
-        System.out.println(l6+ "\n");
-        System.out.println(l10+ "\n");
-        
-        System.out.println("CONCAT");
-        var l7 = miLista.concat(miLista);
-        System.out.println(l7+ "\n");
-        
-        System.out.println("TAKE");
-        var l8 = miLista.take(2);
-        System.out.println(l8+ "\n");
-                
-        System.out.println("TAKEWHILE");
-        var l9 = miLista.takeWile(t->t%2==0);
-        System.out.println(l9+ "\n");
-        
-        System.out.println("SUMA");
-        var l11 = Lista.suma(miLista);
-        System.out.println(l11+ "\n");
-        
-        System.out.println("MAXIMO");
-        var l12 = Lista.maximo(miLista);
-        System.out.println(l12+ "\n");
-        
-        
+		Function<Integer, Integer> triple = x -> 3 * x;
 
-    }
+		Function<Integer, Integer> square = x -> x * x;
+
+		Function<Function<Integer, Integer>, Function<Function<Integer, Integer>, Function<Integer, Integer>>> comp = f -> g -> x -> f
+				.apply(g.apply(x));
+
+		Function<Integer, Integer> fog = comp.apply(square).apply(triple);
+		Function<Integer, Integer> gof = comp.apply(triple).apply(square);
+
+		System.out.println("fog " + fog.apply(2));
+		System.out.println("gof " + gof.apply(2));
+
+		// Hacer un metodo funcional de composicion en una clase y todo como la lista
+
+	}
 }
-
