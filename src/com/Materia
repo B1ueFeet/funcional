@@ -9,3 +9,11 @@ OPERACIONES CON LISTAS
 	SUMA:			la suma es una operacion especial cuando la lista es NUMERICA
 	MULTI:			lo mismo que la suma todo en terminos de cabecera y cola
 	saco la cabecera y hago algo con la cola XD
+	
+	
+FUNCIONES CON VARIOS ARGUMENTOS:	
+	Se puede definir interfaces para automatizar la firma de las funciones 
+	BINARY OPERATOR:	Funcion<T>,T
+
+FUNCION DE ORDEN SUPERIOR:
+	Funcion que toma como argumento otra funcion 	
