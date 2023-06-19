@@ -2,14 +2,20 @@ package com.funcional;
 
 import java.util.function.Function;
 
-public interface Compo {
-	Function<Function<Integer, Integer>, Function<Function<Integer, Integer>, Function<Integer, Integer>>> composicion();
-	static Function<Function<Integer, Integer>, Function<Function<Integer, Integer>, Function<Integer, Integer>>> composicion2(){
-		return f -> (g -> x -> f.apply(g.apply(x)));
+public interface Compo <T, U, V>{
+	
+	static <T> Function<Function<T, T>, Function<Function<T, T>, Function<T, T>>>  composicion1 (){
+		return f -> g -> x -> f.apply(g.apply(x));
 	}
 	
-	static Function <Integer,Integer> composicion3 (Function<Integer, Integer> f, Function<Integer, Integer> g){
-		return x -> f.apply(g.apply(x));
+	static <T, U, V> Function<Function<T, U>, Function<Function<U, V>, Function<T, V>>>  composicion2 (){
+		return f -> g -> x -> g.apply(f.apply(x));
 	}
+	
+
+	
+	
+
+
 			
 }
