@@ -12,6 +12,9 @@ public interface Compo <T, U, V>{
 		return f -> g -> x -> g.apply(f.apply(x));
 	}
 	
+	//string a String[]
+	//String[] a tupla (String, integer)
+	//string a tupla(String, integer)
 
 	
 	
