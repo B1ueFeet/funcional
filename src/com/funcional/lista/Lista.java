@@ -1,5 +1,7 @@
 package com.funcional.lista;
 
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public sealed interface Lista<T> permits Nil, Cons {
@@ -25,6 +27,7 @@ public sealed interface Lista<T> permits Nil, Cons {
 		}
 		return ret;
 	}
+
 	// OPERACIONES BASICAS CON LISTAS
 	default Lista<T> append(T elemen) {
 		return isEmpty() ? Lista.of(elemen) : Lista.of(head(), tail().append(elemen));
@@ -57,17 +60,39 @@ public sealed interface Lista<T> permits Nil, Cons {
 	default Lista<T> takeWile(Predicate<T> p) {
 		return isEmpty() || !p.test(head()) ? NIL : Lista.of(head(), tail().takeWile(p));
 	}
-	
-	//OPERACIONES CON ELEMENTOS DE LA LISTA
-	
-	static  Integer suma (Lista<Integer> ls) {
-		return ls.isEmpty() ? 0 : ls.head()+ suma(ls.tail());
+
+	// OPERACIONES CON ELEMENTOS DE LA LISTA
+
+	static Integer suma(Lista<Integer> ls) {
+		return ls.isEmpty() ? 0 : ls.head() + suma(ls.tail());
 	}
-	
-	static Integer maximo (Lista<Integer> ls) {
+
+	static Integer maximo(Lista<Integer> ls) {
 		return ls.isEmpty() ? 0 : Math.max(ls.head(), maximo(ls.tail()));
 	}
 
-	
-	
+	default Lista<T> remplace(T elem, T newElem) {
+		if (isEmpty()) {
+			return Lista.NIL;
+		}
+
+		return head().equals(elem) ? Lista.of(newElem, tail()) : Lista.of(head(), tail().remplace(elem, newElem));
+
+	}
+
+	default Optional<T> contains(T elem) {
+		if (isEmpty()) {
+			return Optional.empty();
+		}
+
+		return head().equals(elem) ? Optional.of(head()) : tail().contains(elem);
+	}
+
+	default void forEach(Consumer<T> fn) {
+		if (isEmpty()) {
+			fn.accept(head());
+			tail().forEach(fn);
+		}
+	}
+
 }
